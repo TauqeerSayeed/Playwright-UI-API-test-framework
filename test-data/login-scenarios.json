@@ -1,0 +1,41 @@
+{
+  "negative": [
+    {
+      "id": "TC-LOGIN-02",
+      "title": "unregistered email is rejected",
+      "email": "not.registered.user@mailinator.com",
+      "password": "Test@12345",
+      "expectedError": "USER Email Doesn't Exist"
+    },
+    {
+      "id": "TC-LOGIN-03",
+      "title": "wrong password for a registered email is rejected",
+      "email": "pw.tauqe.1787770948042@mailinator.com",
+      "password": "WrongPassword@999",
+      "expectedError": "Email and Password Doesn't match"
+    }
+  ],
+  "requiredFieldValidation": [
+    {
+      "id": "TC-LOGIN-04",
+      "title": "both fields empty",
+      "email": "",
+      "password": "",
+      "expectedError": "Email and Password is required"
+    },
+    {
+      "id": "TC-LOGIN-05",
+      "title": "password missing",
+      "email": "pw.tauqe.1787770948042@mailinator.com",
+      "password": "",
+      "expectedError": "Password is required"
+    },
+    {
+      "id": "TC-LOGIN-06",
+      "title": "email missing",
+      "email": "",
+      "password": "Test@12345",
+      "expectedError": "Email is required"
+    }
+  ]
+}

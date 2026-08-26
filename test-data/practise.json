@@ -1,0 +1,23 @@
+{
+  "enableField": {
+    "heading": "Enable text field after 5 seconds",
+    "buttonLabel": "Enable field",
+    "waitMs": 8000,
+    "typedText": "Field is enabled now"
+  },
+  "hideShow": {
+    "heading": "Hide Show Text Field",
+    "typedText": "Tauqeer"
+  },
+  "doubleClick": {
+    "heading": "Double click",
+    "expectedAlert": "Wohooo! You just double clicked me."
+  },
+  "rightClick": {
+    "heading": "Right click",
+    "expectedAlert": "Strange! You just right clicked to see me."
+  },
+  "dragAndDrop": {
+    "heading": "Drag n Drop"
+  }
+}

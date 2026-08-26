@@ -1,0 +1,10 @@
+{
+  "knownCourses": [
+    { "name": "Selenium For Web Automation", "instructor": "Mukesh Otwani", "price": 1500 },
+    { "name": "Playwright with Java", "instructor": "Shaik Jr", "price": 15000 }
+  ],
+  "cart": {
+    "coursesToAdd": 2,
+    "currencySymbol": "₹"
+  }
+}

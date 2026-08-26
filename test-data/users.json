@@ -1,0 +1,17 @@
+{
+  "validUser": {
+    "email": "pw.tauqe.1787770948042@mailinator.com",
+    "password": "Test@12345",
+    "name": "Playwright Tester"
+  },
+  "newUserTemplate": {
+    "name": "Playwright Tester",
+    "password": "Test@12345",
+    "emailDomain": "mailinator.com",
+    "emailPrefix": "pw.auto",
+    "interest": "Playwright",
+    "gender": "Male",
+    "state": "Karnataka",
+    "hobbies": ["Reading", "Swimming"]
+  }
+}
