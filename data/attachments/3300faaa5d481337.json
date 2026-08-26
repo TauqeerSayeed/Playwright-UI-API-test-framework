@@ -1,0 +1,17 @@
+[
+  {
+    "_id": "67b2abd3289e9e7395cbd866",
+    "name": "Selenium For Web Automation",
+    "description": "Selenium For Web Automation",
+    "instructorName": "Mukesh Otwani",
+    "price": 1500,
+    "startDate": "2025-02-17T03:23:34.000Z",
+    "endDate": "2025-03-17T03:23:34.000Z",
+    "enrolledUsers": [],
+    "isActive": true,
+    "isPermanent": true,
+    "createdAt": "2025-02-17T03:24:03.286Z",
+    "updatedAt": "2025-03-03T17:16:49.628Z",
+    "__v": 0
+  }
+]

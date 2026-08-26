@@ -1,0 +1,7 @@
+{
+  "id": "TC-LOGIN-06",
+  "title": "email missing",
+  "email": "",
+  "password": "Test@12345",
+  "expectedError": "Email is required"
+}

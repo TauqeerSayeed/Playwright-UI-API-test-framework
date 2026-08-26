@@ -1,0 +1,7 @@
+{
+  "id": "TC-LOGIN-05",
+  "title": "password missing",
+  "email": "pw.tauqe.1787770948042@mailinator.com",
+  "password": "",
+  "expectedError": "Password is required"
+}

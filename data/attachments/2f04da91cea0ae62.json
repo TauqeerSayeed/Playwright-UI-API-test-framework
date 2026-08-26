@@ -1,0 +1,7 @@
+{
+  "id": "TC-LOGIN-04",
+  "title": "both fields empty",
+  "email": "",
+  "password": "",
+  "expectedError": "Email and Password is required"
+}
