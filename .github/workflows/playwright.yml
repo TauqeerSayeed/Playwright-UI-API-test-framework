@@ -10,6 +10,9 @@ on:
     - cron: '0 2 * * *'
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   test:
     name: Run Playwright suite
@@ -45,6 +48,7 @@ jobs:
           name: playwright-report
           path: playwright-report/
           retention-days: 14
+          if-no-files-found: ignore
 
       - name: Upload raw Allure results
         uses: actions/upload-artifact@v4
@@ -53,6 +57,7 @@ jobs:
           name: allure-results
           path: allure-results/
           retention-days: 14
+          if-no-files-found: ignore
 
       # Keeps history across runs so Allure can show trends, then publishes the
       # generated report to the gh-pages branch.
@@ -64,8 +69,17 @@ jobs:
           ref: gh-pages
           path: gh-pages
 
-      - name: Generate Allure report
+      # On the very first run there is no gh-pages branch, so the checkout above
+      # is a no-op and this directory would not exist - the report action needs
+      # it to be present even when it is empty.
+      - name: Ensure history directory exists
         if: ${{ !cancelled() }}
+        run: mkdir -p gh-pages
+
+      - name: Generate Allure report
+        # Skipped when the run crashed before producing any results, which would
+        # otherwise leave allure-history missing for the publish step.
+        if: ${{ !cancelled() && hashFiles('allure-results/**') != '' }}
         uses: simple-elf/allure-report-action@v1.7
         with:
           allure_results: allure-results
@@ -74,7 +88,7 @@ jobs:
           keep_reports: 20
 
       - name: Publish Allure report to GitHub Pages
-        if: ${{ !cancelled() && github.ref == 'refs/heads/main' }}
+        if: ${{ !cancelled() && github.ref == 'refs/heads/main' && hashFiles('allure-history/**') != '' }}
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}

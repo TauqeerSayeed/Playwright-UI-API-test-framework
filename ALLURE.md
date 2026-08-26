@@ -63,7 +63,7 @@ npm i -D allure-playwright allure-commandline
 | Package | Version here | Role |
 |---|---|---|
 | `allure-playwright` | `3.11.0` | the Playwright **reporter** — writes raw results during the run |
-| `allure-commandline` | `2.35.1` | the `allure` **CLI** — turns raw results into the HTML report |
+| `allure-commandline` | `2.43.0` | the `allure` **CLI** — turns raw results into the HTML report |
 
 > **Version note:** the adapter is on the Allure 3 line while the CLI is Allure 2. This combination is verified working in this project — labels, severities, steps and attachments all render correctly. The docs site splits `/docs/v2/` and `/docs/v3/` paths if you prefer to align both on one major version.
 
