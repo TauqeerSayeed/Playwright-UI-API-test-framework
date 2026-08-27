@@ -1,3 +1,0 @@
-[2026-08-26T20:20:49.421Z] [INFO] API signup {"email":"pw.auto.mtajgnm4lq2c@mailinator.com"}
-[2026-08-26T20:20:49.831Z] [INFO] Navigating to /login
-[2026-08-26T20:20:49.993Z] [INFO] Signing in {"email":"pw.auto.mtajgnm4lq2c@mailinator.com"}
