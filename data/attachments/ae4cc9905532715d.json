@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Selenium For Web Automation",
+    "instructor": "Mukesh Otwani",
+    "price": 1500
+  },
+  {
+    "name": "Playwright with Java",
+    "instructor": "Shaik Jr",
+    "price": 15000
+  },
+  {
+    "name": "Software Testing Course",
+    "instructor": "Mukesh Otwani",
+    "price": 1000
+  },
+  {
+    "name": "Javascript",
+    "instructor": "Mukesh Otwani",
+    "price": 1000
+  },
+  {
+    "name": "Typescripts",
+    "instructor": "Mukesh Otwani",
+    "price": 2000
+  },
+  {
+    "name": "Typescriptss",
+    "instructor": "Mukesh Otwani",
+    "price": 2000
+  },
+  {
+    "name": "Typescripting",
+    "instructor": "Mukesh Otwani",
+    "price": 2000
+  }
+]
