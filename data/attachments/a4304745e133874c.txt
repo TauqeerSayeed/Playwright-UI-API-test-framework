@@ -1,0 +1,2 @@
+[2026-08-30T07:51:39.148Z] [INFO] Navigating to /login
+[2026-08-30T07:51:39.693Z] [INFO] Signing in {"email":"pw.tauqe.1787770948042@mailinator.com"}

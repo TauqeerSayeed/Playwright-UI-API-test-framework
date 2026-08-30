@@ -1,3 +1,0 @@
-[2026-08-29T08:37:26.440Z] [INFO] Navigating to /login
-[2026-08-29T08:37:26.905Z] [INFO] Signing in {"email":"pw.tauqe.1787770948042@mailinator.com"}
-[2026-08-29T08:37:28.298Z] [INFO] Saved authenticated storage state {"path":"/home/runner/work/Playwright-UI-API-test-framework/Playwright-UI-API-test-framework/playwright/.auth/user.json","email":"pw.tauqe.1787770948042@mailinator.com"}
