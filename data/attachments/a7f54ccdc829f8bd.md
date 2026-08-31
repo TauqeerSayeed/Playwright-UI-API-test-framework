@@ -1,0 +1,155 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: auth/logout.spec.js >> Authentication - Logout >> TC-LOGOUT-02 - signing out empties the cart @regression
+- Location: tests/auth/logout.spec.js:38:7
+
+# Error details
+
+```
+TimeoutError: page.waitForURL: Timeout 60000ms exceeded.
+=========================== logs ===========================
+waiting for navigation until "load"
+============================================================
+```
+
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - navigation [ref=e4]:
+    - generic [ref=e5]:
+      - generic [ref=e6] [cursor=pointer]:
+        - img "logo" [ref=e7]
+        - heading "Learn Automation Courses" [level=1] [ref=e8]
+      - generic [ref=e9]:
+        - img "menu" [ref=e10] [cursor=pointer]
+        - generic [ref=e11]:
+          - generic [ref=e12]:
+            - text: Learn Automation Courses
+            - img "delete" [ref=e13] [cursor=pointer]
+          - generic [ref=e14]:
+            - link "Home" [ref=e15] [cursor=pointer]:
+              - /url: /
+            - link "Practise" [ref=e17] [cursor=pointer]:
+              - /url: /practise
+  - generic [ref=e20]:
+    - img "Login" [ref=e22]
+    - generic [ref=e23]:
+      - generic [ref=e25]:
+        - heading "Sign In" [level=2] [ref=e26]
+        - textbox "Enter Email" [ref=e27]: pw.tauqe.1787770948042@mailinator.com
+        - textbox "Enter Password" [ref=e28]: Test@12345
+        - heading [level=2] [ref=e29]:
+          - img "error" [ref=e30]
+          - text: Something went wrong
+        - button "Sign in" [active] [ref=e31] [cursor=pointer]
+        - link "New user? Signup" [ref=e32] [cursor=pointer]:
+          - /url: /signup
+      - generic [ref=e33]:
+        - heading "Connect with us" [level=2] [ref=e34]
+        - generic [ref=e35] [cursor=pointer]:
+          - link [ref=e36]:
+            - /url: https://youtube.com/MukeshOtwani
+          - link [ref=e40]:
+            - /url: https://twitter.com/MukeshOtwani
+          - link [ref=e43]:
+            - /url: https://www.linkedin.com/in/mukesh-otwani-93631b99/
+          - link [ref=e46]:
+            - /url: https://www.facebook.com/groups/256655817858291
+          - link [ref=e49]:
+            - /url: https://learn-automation/reddit
+  - generic [ref=e64]:
+    - generic [ref=e65]:
+      - heading "Learn Automation By Mukesh Otwani" [level=3] [ref=e66]
+      - heading "©2023 All rights reserved" [level=2] [ref=e67]
+    - generic [ref=e68] [cursor=pointer]:
+      - link [ref=e69]:
+        - /url: https://youtube.com/MukeshOtwani
+      - link [ref=e73]:
+        - /url: https://twitter.com/MukeshOtwani
+      - link [ref=e76]:
+        - /url: https://www.linkedin.com/in/mukesh-otwani-93631b99/
+      - link [ref=e79]:
+        - /url: https://www.facebook.com/groups/256655817858291
+```
+
+# Test source
+
+```ts
+  1  | import { expect } from '@playwright/test';
+  2  | import { BasePage } from './BasePage.js';
+  3  | import { logger } from '../utils/logger.js';
+  4  | 
+  5  | export class LoginPage extends BasePage {
+  6  |   /** @param {import('@playwright/test').Page} page */
+  7  |   constructor(page) {
+  8  |     super(page, '/login');
+  9  | 
+  10 |     this.form = page.locator('form.login-form');
+  11 |     this.heading = this.form.locator('h2.header');
+  12 |     this.emailInput = page.locator('#email1');
+  13 |     this.passwordInput = page.locator('#password1');
+  14 |     this.signInButton = this.form.locator('button.submit-btn');
+  15 |     this.errorMessage = this.form.locator('h2.errorMessage');
+  16 |     this.signUpLink = this.form.locator('a.subLink');
+  17 |     this.socialLinks = page.locator('#login_container .social-btns a');
+  18 |   }
+  19 | 
+  20 |   async waitUntilLoaded() {
+  21 |     await expect(this.heading).toHaveText('Sign In');
+  22 |   }
+  23 | 
+  24 |   /** Fills the form without submitting - used by validation tests. */
+  25 |   async fillCredentials(email, password) {
+  26 |     await this.emailInput.fill(email);
+  27 |     await this.passwordInput.fill(password);
+  28 |   }
+  29 | 
+  30 |   async submit() {
+  31 |     await this.signInButton.click();
+  32 |   }
+  33 | 
+  34 |   /**
+  35 |    * Signs in and waits for the redirect to the home page.
+  36 |    *
+  37 |    * @param {{email: string, password: string}} user
+  38 |    */
+  39 |   async loginAs({ email, password }) {
+  40 |     logger.info('Signing in', { email });
+  41 |     await this.fillCredentials(email, password);
+  42 |     await this.submit();
+> 43 |     await this.page.waitForURL((url) => !url.pathname.includes('login'), { timeout: 60_000 });
+     |                     ^ TimeoutError: page.waitForURL: Timeout 60000ms exceeded.
+  44 |   }
+  45 | 
+  46 |   /** Submits credentials that are expected to fail and returns the error text. */
+  47 |   async loginExpectingFailure({ email, password }) {
+  48 |     await this.fillCredentials(email, password);
+  49 |     await this.submit();
+  50 |     await expect(this.errorMessage).toBeVisible({ timeout: 60_000 });
+  51 |     return (await this.errorMessage.innerText()).trim();
+  52 |   }
+  53 | 
+  54 |   async goToSignUp() {
+  55 |     await this.signUpLink.click();
+  56 |     await this.page.waitForURL(/\/signup/);
+  57 |   }
+  58 | 
+  59 |   /** The browser refuses to submit an empty required/typed field. */
+  60 |   async isEmailValid() {
+  61 |     return this.emailInput.evaluate((el) => el.checkValidity());
+  62 |   }
+  63 | 
+  64 |   async validationMessage(field = 'email') {
+  65 |     const input = field === 'email' ? this.emailInput : this.passwordInput;
+  66 |     return input.evaluate((el) => el.validationMessage);
+  67 |   }
+  68 | }
+  69 | 
+```
