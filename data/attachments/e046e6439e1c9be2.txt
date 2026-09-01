@@ -1,2 +1,0 @@
-[2026-08-31T08:12:43.085Z] [INFO] Navigating to /login
-[2026-08-31T08:12:43.394Z] [INFO] Navigating to /cart

@@ -1,7 +1,0 @@
-{
-  "id": "TC-LOGIN-02",
-  "title": "unregistered email is rejected",
-  "email": "not.registered.user@mailinator.com",
-  "password": "Test@12345",
-  "expectedError": "USER Email Doesn't Exist"
-}

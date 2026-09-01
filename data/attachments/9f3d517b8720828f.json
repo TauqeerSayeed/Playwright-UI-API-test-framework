@@ -1,7 +1,0 @@
-{
-  "id": "TC-LOGIN-03",
-  "title": "wrong password for a registered email is rejected",
-  "email": "pw.tauqe.1787770948042@mailinator.com",
-  "password": "WrongPassword@999",
-  "expectedError": "Email and Password Doesn't match"
-}

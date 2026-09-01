@@ -1,0 +1,1 @@
+[2026-09-01T07:19:46.151Z] [INFO] Navigating to /
