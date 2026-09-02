@@ -1,0 +1,16 @@
+{
+  "interests": [
+    "JavaScript",
+    "Python",
+    "C"
+  ],
+  "states": 36,
+  "hobbies": [
+    "Select Multiple Hobbies",
+    "Playing",
+    "Reading",
+    "Swimming",
+    "Singing",
+    "Dancing"
+  ]
+}

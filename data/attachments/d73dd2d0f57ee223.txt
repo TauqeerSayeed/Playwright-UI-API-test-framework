@@ -1,2 +1,0 @@
-[2026-09-01T07:17:02.035Z] [INFO] Navigating to /signup
-[2026-09-01T07:17:03.198Z] [INFO] Filling signup form {"email":"pw.auto.mtic3txo6fxf@mailinator.com"}

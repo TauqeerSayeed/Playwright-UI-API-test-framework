@@ -1,1 +1,0 @@
-[2026-09-01T07:16:23.376Z] [INFO] Navigating to /login
