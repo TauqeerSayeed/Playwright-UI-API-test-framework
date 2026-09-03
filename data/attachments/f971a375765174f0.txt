@@ -1,1 +1,0 @@
-[2026-09-02T06:50:05.568Z] [INFO] Navigating to /signup
